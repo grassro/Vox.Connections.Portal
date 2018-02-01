@@ -1,0 +1,189 @@
+<form role="form" class="form-horizontal validate" [formGroup]="inputForm" novalidate>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Nova vaga</h3>
+          <div class="row">
+              <div class="vertical-top pull-right">
+                <button type="button" class="btn btn-white btn-icon btn-icon-standalone" (click)="goBack()">
+                  <i class="fa-arrow-left"></i>
+                  <span>Voltar</span>
+                </button>
+  
+                <button type="button" (click)="submit()" class="btn btn-secondary btn-icon btn-icon-standalone">
+                  <i class="fa-share"></i>
+                  <span>Salvar</span>
+                </button>
+              </div>
+            </div>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="titulo">Título</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="titulo" formControlName="titulo" required>
+              <validation-message [control]="inputForm.controls['titulo']"></validation-message>
+            </div>
+          </div>
+
+          <div class="form-group-separator"></div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="empresa">Empresa</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="empresa" formControlName="empresa" required>
+              <validation-message [control]="inputForm.controls['empresa']"></validation-message>
+            </div>
+          </div>
+
+          <div class="form-group-separator"></div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="areaAtuacao">Área Atuação</label>
+            <div class="col-sm-4">
+              <area-atuacao id="areaAtuacao" formControlName="areaAtuacao" required selectClass="form-control">
+              </area-atuacao>
+              <validation-message [control]="inputForm.controls['areaAtuacao']"></validation-message>
+            </div>
+          </div>
+
+          <div class="form-group-separator"></div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="descricao">Descrição</label>
+            <div class="col-sm-10">
+              <textarea class="form-control autogrow" cols="5" id="descricao" formControlName="descricao" required style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 50px;"></textarea>
+              <validation-message [control]="inputForm.controls['descricao']"></validation-message>
+            </div>
+          </div>
+
+          <div class="form-group-separator"></div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="uf">Estado</label>
+            <div class="col-sm-2">
+              <estado id="uf" formControlName="uf" required="true" selectClass="form-control">
+              </estado>
+              <validation-message [control]="inputForm.controls['uf']"></validation-message>
+            </div>
+          </div>
+
+          <div class="form-group-separator"></div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="cidade">Cidade</label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="linecons-location"></i>
+                </div>
+                <input type="text" class="form-control" id="cidade" formControlName="cidade" required>
+              </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-10">
+                <validation-message [control]="inputForm.controls['cidade']"></validation-message>
+            </div>
+          </div>
+          <div class="form-group-separator"></div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="nivelEscolaridadeuf">Nível de escolaridade</label>
+            <div class="col-sm-3">
+              <nivel-escolaridade id="nivelEscolaridade" formControlName="nivelEscolaridade" required selectClass="form-control">
+              </nivel-escolaridade>
+              <validation-message [control]="inputForm.controls['nivelEscolaridade']"></validation-message>
+            </div>
+          </div>
+          <div class="form-group-separator"></div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="nivelFuncao">Nível de função</label>
+            <div class="col-sm-3">
+              <nivel-funcao id="nivelFuncao" formControlName="nivelFuncao" required selectClass="form-control">
+              </nivel-funcao>
+              <validation-message [control]="inputForm.controls['nivelFuncao']"></validation-message>
+            </div>
+          </div>
+          <div class="form-group-separator"></div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="tipoContratacao">Tipo de contratação</label>
+            <div class="col-sm-2">
+              <tipo-contratacao id="tipoContratacao" formControlName="tipoContratacao" required selectClass="form-control">
+              </tipo-contratacao>
+              <validation-message [control]="inputForm.controls['tipoContratacao']"></validation-message>
+            </div>
+          </div>
+          <div class="form-group-separator"></div>
+
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">IDIOMAS</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="idioma">Idioma</label>
+            <div class="col-sm-3">
+              <select class="form-control" id="idioma" formControlName="idioma">
+                <option value="Alemão">Alemão</option>
+                <option value="Espanhol">Espanhol</option>
+                <option value="Francês">Francês</option>
+                <option value="Inglês">Inglês</option>
+                <option value="Italiano">Italiano</option>
+                <option value="Japonês">Japonês</option>
+                <option value="Mandarim">Mandarim</option>
+              </select>
+            </div>
+            <label class="col-sm-1 control-label" for="nivelIdioma">Nível</label>
+            <div class="col-sm-3">
+              <select class="form-control" id="nivelIdioma" formControlName="nivelIdioma">
+                <option value="Básico">Básico</option>
+                <option value="Intermediário">Intermediário</option>
+                <option value="Avançado">Avançado</option>
+                <option value="Fluente">Fluente</option>
+              </select>
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-white btn-icon btn-sm" type="button" (click)="adicionarIdioma()">
+                <span>Adicionar</span>
+                <i class="fa-plus"></i>
+              </button>
+            </div>
+            <div *ngIf="idiomaErrorMessage" class="col-sm-offset-2 col-sm-10">
+              <span class="text-danger">{{idiomaErrorMessage}}</span>
+            </div>
+          </div>
+
+          <div class="col-sm-12">
+            <table class="table responsive">
+              <thead>
+                <tr>
+                  <th>Idioma</th>
+                  <th>Nível</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let idioma of idiomaList; let i=index">
+                  <td>{{idioma.nomeIdioma}}</td>
+                  <td>{{idioma.nivelIdioma}}</td>
+                  <td>
+                    <a (click)="removerIdioma(i)" title="Remover">
+                      <i class="fa-remove"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+          <div class="form-group-separator"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

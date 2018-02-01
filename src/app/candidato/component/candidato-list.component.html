@@ -1,0 +1,93 @@
+<div *ngIf="loading" class="page-loading-overlay">
+    <div class="loader-1"></div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{ showSearch ? "Busca de candidato" : "Lista de candidatos" }}
+        </h3>
+        <div class="panel-options" *ngIf="showSearch">
+            <a href="#" (click)="showSearchForm()" *ngIf="!showParameters">
+                <span class="expand-icon">+ Voltar</span>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body" *ngIf="showSearch && showParameters">
+        <div class="col-sm-12">
+            <form role="form" class="form-horizontal" [formGroup]="searchForm" novalidate (submit)="search()">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="nivelFuncao">Área de atuação</label>
+                        <div class="col-sm-4">
+                            <area-atuacao id="areaAtuacao" formControlName="areaAtuacao" required selectClass="form-control">
+                            </area-atuacao>
+                        </div>
+
+                        <label class="col-sm-2 control-label" for="nivelFuncao">Nível de escolaridade</label>
+                        <div class="col-sm-4">
+                            <nivel-escolaridade id="nivelEscolaridade" formControlName="nivelEscolaridade" required selectClass="form-control">
+                            </nivel-escolaridade>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="areaInteresse">Área de interesse</label>
+                        <div class="col-sm-4">
+                            <area-atuacao id="areaInteresse" formControlName="areaInteresse" required selectClass="form-control">
+                            </area-atuacao>
+                        </div>
+
+                        <label class="col-sm-2 control-label" for="nivelFuncao">Nível de função</label>
+                        <div class="col-sm-4">
+                            <nivel-funcao id="nivelFuncao" formControlName="nivelFuncao" required selectClass="form-control">
+                            </nivel-funcao>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="idioma">Idioma</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" name="idioma" id="idioma" formControlName="idioma">
+                                <option value="">Selecione</option>
+                                <option value="Alemão">Alemão</option>
+                                <option value="Espanhol">Espanhol</option>
+                                <option value="Francês">Francês</option>
+                                <option value="Inglês">Inglês</option>
+                                <option value="Italiano">Italiano</option>
+                                <option value="Japonês">Japonês</option>
+                                <option value="Mandarim">Mandarim</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-white btn-icon btn-sm" type="button" (click)="search()">
+                        <span>Buscar candidatos</span>
+                        <i class="fa-plus"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel-body" *ngIf="(!showSearch || searchLoaded)">
+        <table class="table table-bordered table-striped no-footer" id="tableList">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th class="desktop-only">E-mail</th>
+                    <th class="desktop-only">Celular</th>
+                    <th class="desktop-only">Área de atuação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of list">
+                    <td>
+                        <a [routerLink]="['/candidato', item.idCandidato]">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a> {{item.nome}}
+                    </td>
+                    <td class="desktop-only">{{item.email}}</td>
+                    <td class="desktop-only">{{item.celular}}</td>
+                    <td class="desktop-only">{{item.areaAtuacao}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

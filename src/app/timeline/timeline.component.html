@@ -1,0 +1,66 @@
+<div class="timeline-content" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1300" (scrolled)="onScrollDown()">
+  <ul class="cbp_tmtimeline">
+    <li *ngIf="locked">
+      <time class="cbp_tmtime">
+        <span class="hidden">{{textoDataAtual}}</span>
+        <span class="large">Hoje</span>
+      </time>
+      <div class="cbp_tmicon timeline-bg-success">
+      </div>
+      <div class="cbp_tmlabel">
+        <h2>Carregando as vagas...</h2>
+        <blockquote>Aguarde enquanto as vagas estão sendo carregadas</blockquote>
+      </div>
+    </li>
+    <li *ngIf="!locked && (!vagas || vagas?.length == 0)">
+      <time class="cbp_tmtime">
+        <span class="hidden">{{textoDataAtual}}</span>
+        <span class="large">Hoje</span>
+      </time>
+      <div class="cbp_tmicon timeline-bg-gray">
+      </div>
+      <div class="cbp_tmlabel">
+        <h2>Nenhuma vaga encontrada</h2>
+        <blockquote>No momento não encontramos nenhuma vaga cadastrada</blockquote>
+      </div>
+    </li>
+    <li *ngFor="let item of vagas">
+      <time class="cbp_tmtime">
+        <span>{{getDiaDescricao(item.data)}}</span>
+      </time>
+      <div [class]="getIconClass(item)">
+        <a [routerLink]="['/vaga', item.idVaga]"></a>
+      </div>
+      <div class="cbp_tmlabel">
+        <h2>
+          <a [routerLink]="['/vaga', item.idVaga]">{{item.titulo}} - {{item.nivelFuncao}}</a>
+          <span>postado por&nbsp;</span>{{item.headhunter?.nome}}
+        </h2>
+        <h3>{{item.headhunter?.empresa}} - {{item.cidade}}/{{item.uf}}</h3>
+        <h3>{{item.nivelEscolaridade}} - {{item.tipoContratacao}}</h3>
+        <h3 *ngIf="item.idiomas">{{getIdiomas(item)}}</h3>
+        <blockquote>{{item.descricao}}</blockquote>
+        <div class="vertical-top pull-right">
+          <button *ngIf="podeCandidatar(item)" type="button" class="btn btn-sm btn-secondary btn-icon btn-icon-standalone" (click)="candidatar(item)">
+            <i class="fa-share"></i>
+            <span>Candidatar-se</span>
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="modal fade" id="modal-candidatar">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">{{messageModal}}</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-white" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>

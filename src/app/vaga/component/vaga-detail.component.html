@@ -1,0 +1,80 @@
+<div class="panel panel-default" *ngIf="item">
+    <section class="vaga">
+        <div class="page-title">
+            <div class="title-env">
+                <h1 class="title">{{item.titulo}}</h1>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <label class="col-sm-2">Empresa</label>
+                <div class="col-sm-4">
+                    <span>{{item.empresa}}</span>
+                </div>
+                <label class="col-sm-2">Área de Atuação</label>
+                <div class="col-sm-4">
+                    <span>{{item.areaAtuacao}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Nível de Escolaridade</label>
+                <div class="col-sm-4">
+                    <span>{{item.nivelEscolaridade}}</span>
+                </div>
+                <label class="col-sm-2">Nível de Função</label>
+                <div class="col-sm-4">
+                    <span>{{item.nivelFuncao}}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-2">Tipo de Contratação</label>
+                <div class="col-sm-10">
+                    <span>{{item.tipoContratacao}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Descrição da vaga</label>
+                <div class="col-sm-10">
+                    <span>{{item.descricao}}</span>
+                </div>
+            </div>
+            <div class="form-group" *ngIf="item.idiomas && item.idiomas.length > 0">
+                <div class="col-md-12">
+                    <table class="table responsive">
+                        <thead>
+                            <tr>
+                                <th>Idioma</th>
+                                <th>Nível</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let idioma of item.idiomas">
+                                <td>{{idioma.nomeIdioma}}</td>
+                                <td>{{idioma.nivelIdioma}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="vertical-top pull-right">
+                    <button *ngIf="podeVoltar" class="btn btn-white btn-icon btn-icon-standalone" (click)="goBack()">
+                        <i class="fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </button>
+
+                    <button *ngIf="podeCandidatar" type="button" class="btn btn-secondary btn-icon btn-icon-standalone" (click)="candidatar()">
+                        <i class="fa-share"></i>
+                        <span>Candidatar-se</span>
+                    </button>
+
+                    <button *ngIf="!fromSearch && podeEncerrar" type="button" class="btn btn-purple btn-icon btn-icon-standalone" (click)="encerrar()">
+                        <i class="fa-share"></i>
+                        <span>Encerrar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,24 @@
+.panel .panel-heading > .panel-title {
+    font-size: 20px;
+}
+
+.panel-options .btn {
+    margin-bottom: 0px;
+}
+
+.table td.fit, 
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+
+/* @media only screen and (min-width: 768px){
+    .desktop-only{
+        display: block;
+    }
+} */
+@media only screen and (max-width: 767px){
+    .desktop-only{
+        display: none;
+    }
+}

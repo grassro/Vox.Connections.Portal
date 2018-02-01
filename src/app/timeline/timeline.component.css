@@ -1,0 +1,13 @@
+.cbp_tmtimeline>li .cbp_tmlabel h3 {
+    font-size: 13px;
+    margin-top: -5px;
+}
+
+.cbp_tmtimeline>li .cbp_tmlabel button {
+    margin-top: -20px;
+}
+
+.modal .modal-dialog{
+    margin: 0 auto;
+    top: 50%;
+}

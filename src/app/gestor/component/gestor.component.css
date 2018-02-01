@@ -1,0 +1,5 @@
+@import "/../../../assets/js/datatables/dataTables.bootstrap.css";
+@import "/../../../assets/css/custom.css";
+
+.gestor .page-title{margin-bottom: 0px !important;}
+.gestor .row span{ font-weight: bold;}

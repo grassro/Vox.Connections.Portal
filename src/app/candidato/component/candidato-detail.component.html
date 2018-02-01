@@ -1,0 +1,105 @@
+<div class="panel panel-default">
+    <section class="candidato" *ngIf="item">
+        <div class="page-title">
+            <div class="title-env">
+                <h1 class="title">{{item.nome}}</h1>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <label class="col-sm-2">E-mail</label>
+                <div class="col-sm-4">
+                    <span>{{item.email}}</span>
+                </div>
+                <label class="col-sm-2">Nascimento</label>
+                <div class="col-sm-4">
+                    <span>{{getDataFormatada(item.dataNascimento)}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Celular</label>
+                <div class="col-sm-4">
+                    <span>{{item.celular}}</span>
+                </div>
+                <label class="col-sm-2">Cidade/UF</label>
+                <div class="col-sm-4">
+                    <span>{{item.cidade}}/{{item.estado}}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-2">Escolaridade</label>
+                <div class="col-sm-4">
+                    <span>{{item.nivelEscolaridade}}</span>
+                </div>
+                <label class="col-sm-2">Área de Atuação</label>
+                <div class="col-sm-4">
+                    <span>{{item.areaAtuacao}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Nível de Função</label>
+                <div class="col-sm-4">
+                    <span>{{item.nivelFuncao}}</span>
+                </div>
+                <label class="col-sm-2">Área de Interesse</label>
+                <div class="col-sm-4">
+                    <span>{{item.areaInteresse}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Atualmente empregado?</label>
+                <div class="col-sm-4">
+                    <span>{{item.empregado ? 'Sim' : 'Não'}}</span>
+                </div>
+                <label class="col-sm-2">Link</label>
+                <div class="col-sm-4">
+                    <span>{{(item.link) ? item.link : '' }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2">Área Executiva</label>
+                <div class="col-sm-4">
+                    <span>{{(item.areaExecutiva) ? item.areaExecutiva : '' }}</span>
+                </div>
+                <label class="col-sm-2">Esfera</label>
+                <div class="col-sm-4">
+                    <span>{{item.esfera}}</span>
+                </div>
+            </div>
+            <div class="form-group" *ngIf="item && item.idiomas">
+                <div class="col-md-12">
+                    <table class="table responsive">
+                        <thead>
+                            <tr>
+                                <th>Idioma</th>
+                                <th>Nível</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let idioma of item.idiomas">
+                                <td>{{idioma.nomeIdioma}}</td>
+                                <td>{{idioma.nivelIdioma}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="vertical-top pull-right">
+                    <button class="btn btn-white btn-icon btn-icon-standalone" (click)="goBack()">
+                        <i class="fa-arrow-left"></i>
+                        <span>Voltar</span>
+                    </button>
+
+                    <!-- <button type="button" class="btn btn-blue btn-icon btn-icon-standalone" (click)="downloadCV()"> -->
+                    <a href="#" download="a" class="btn btn-blue btn-icon btn-icon-standalone">
+                        <i class="fa-download"></i>
+                        <span>Download Currículum</span>
+                    </a>
+                    <!-- </button> -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

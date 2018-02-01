@@ -1,0 +1,34 @@
+<div *ngIf="loading" class="page-loading-overlay">
+    <div class="loader-1"></div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Lista de gestores
+        </h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped no-footer" id="tableList" #tableList>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th class="desktop-only">E-mail</th>
+                    <th class="desktop-only">Celular</th>
+                    <th class="desktop-only">Área de atuação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of list">
+                    <td>
+                        <a [routerLink]="['/gestor', item.idGestor]">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a> {{item.nome}}
+                    </td>
+                    <td class="desktop-only">{{item.email}}</td>
+                    <td class="desktop-only">{{item.celular}}</td>
+                    <td class="desktop-only">{{item.areaAtuacao}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

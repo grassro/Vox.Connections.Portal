@@ -1,0 +1,150 @@
+<div class="navbar-inner">
+
+    <div class="navbar-brand">
+        <a [routerLink]="['/timeline']" class="logo">
+            <img src="assets/images/logo-white-bg@2x.png" width="80" alt="" class="hidden-xs">
+            <img src="assets/images/logo-white-bg@2x.png" width="80" alt="" class="visible-xs">
+        </a>
+    </div>
+    <div class="nav navbar-mobile">
+        <div class="mobile-menu-toggle">
+
+            <a href="" data-toggle="mobile-menu-horizontal">
+                <i class="fa-bars"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="navbar-mobile-clear"></div>
+    <ul class="navbar-nav">
+        <li class="has-sub" [hidden]="!isAutenticado || !isGestor">
+            <a href="javascript:void(0)">
+                <i class="linecons-cog"></i>
+                <span class="title">Gestor</span>
+            </a>
+            <ul>
+                <li>
+                    <a routerLink="/gestor/convite">
+                        <i class="linecons-mail"></i>
+                        <span class="title">Enviar convite</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/gestor">
+                        <i class="linecons-mail"></i>
+                        <span class="title">Lista de gestores</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="has-sub" [hidden]="!isAutenticado">
+            <a href="javascript:void(0)">
+                <i class="linecons-cog"></i>
+                <span class="title">Headhunter</span>
+            </a>
+            <ul>
+                <li [hidden]="!isHeadhunter && !isGestor">
+                    <a routerLink="/headhunter/convite">
+                        <i class="linecons-mail"></i>
+                        <span class="title">Enviar convite</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/headhunter">
+                        <i class="linecons-mail"></i>
+                        <span class="title">Lista de headhunters</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="has-sub" [hidden]="!isAutenticado">
+            <a href="javascript:void(0)">
+                <i class="linecons-cog"></i>
+                <span class="title">Candidatos</span>
+            </a>
+            <ul>
+                <li [hidden]="!isCandidato && !isGestor">
+                    <a routerLink="/candidato/convite">
+                        <i class="linecons-mail"></i>
+                        <span class="title">Enviar convite</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/candidato">
+                        <i class="linecons-mail"></i>
+                        <span class="title">Lista de candidatos</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="has-sub" [hidden]="!isAutenticado">
+            <a href="javascript:void(0)">
+                <i class="linecons-cog"></i>
+                <span class="title">Vagas</span>
+            </a>
+            <ul>
+                <li [hidden]="!isHeadhunter && !isGestor">
+                    <a routerLink="/vaga/create">
+                        <i class="linecons-search"></i>
+                        <span class="title">Cadastrar vagas</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/vaga">
+                        <i class="linecons-search"></i>
+                        <span class="title">Lista de vagas</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="has-sub" [hidden]="!isAutenticado">
+            <a href="javascript:void(0)">
+                <i class="linecons-cog"></i>
+                <span class="title">Buscas</span>
+            </a>
+            <ul>
+                <li [hidden]="!isHeadhunter && !isGestor">
+                    <a routerLink="/candidato/search">
+                        <i class="linecons-search"></i>
+                        <span class="title">Buscar candidato</span>
+                    </a>
+                </li>
+                <li [hidden]="!isCandidato && !isGestor">
+                    <a routerLink="/vaga/search">
+                        <i class="linecons-search"></i>
+                        <span class="title">Buscar vagas</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul [hidden]="!isAutenticado" class="nav nav-userinfo navbar-right">
+
+        <li class="dropdown user-profile" style="min-height: 76px;">
+            <a href="javascript:void(0)" data-toggle="dropdown">
+                <span>
+                    {{nomeUsuario}}
+                    <i class="fa-angle-down"></i>
+                </span>
+            </a>
+
+            <ul class="dropdown-menu user-profile-menu list-unstyled">
+                <li class="last">
+                    <a [routerLink]="[getEditLink()]">
+                        <i class="glyphicon glyphicon-user"></i>
+                        Editar perfil
+                    </a>
+                </li>
+                <li class="last">
+                    <a routerLink="/logout">
+                        <i class="fa-lock"></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+</div>

@@ -1,0 +1,89 @@
+<form [formGroup]="formConvite" role="form" class="form-horizontal" (submit)="submit()">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Convidar {{DescricaoTipo}}</h3>
+        </div>
+        <div class="panel-body">
+
+          <div class="col-sm-10">
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="nome" >Nome do {{DescricaoTipo}}</label>
+              <div class="col-sm-4">
+                <input formControlName="nome" id="nome" class="form-control">
+                <validation-message [control]="formConvite.controls['nome']"></validation-message>
+              </div>
+              <label class="col-sm-2 control-label" for="nome">E-mail</label>
+              <div class="col-sm-4">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="linecons-mail"></i>
+                  </span>
+                  <input formControlName="email" id="email" class="form-control">
+                </div>
+                <validation-message [control]="formConvite.controls['email']"></validation-message>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-2">
+            <div class="form-group">
+              <label class="control-label">&nbsp;</label>
+                <button type="button" class="btn btn-white btn-icon btn-sm" (click)="adicionarConvite()" [disabled]="!formConvite.valid">
+                  <span>Adicionar</span>
+                  <i class="fa-plus"></i>
+                </button>
+            </div>
+          </div>
+
+          <div class="form-group" *ngIf="errorMessage !== null">
+            <div class="col-sm-12">
+              <div class="alert alert-default">
+                <button type="button" class="close" data-dismiss="alert">
+                  <span aria-hidden="true">×</span>
+                  <span class="sr-only">Fechar</span>
+                </button>
+                {{errorMessage}}
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-12">
+              <table class="table responsive">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let convite of listaConvites">
+                    <td>{{convite.nome}}</td>
+                    <td>{{convite.email}}</td>
+                    <td>
+                      <a (click)="removerConvite(convite)" title="Remover"><i class="fa-remove"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="form-group-separator"></div>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="form-group">
+          <button type="submit" [disabled]="!listaConvites || listaConvites.length == 0" class="btn btn-success btn-icon btn-icon-standalone pull-right">
+            <i class="fa-check"></i>
+            <span>Enviar convites</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+  <section class="headhunter">
+    <div class="page-title">
+      <div class="title-env">
+        <h1 class="title">{{item?.nome}}</h1>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <label class="col-sm-2">E-mail</label>
+        <div class="col-sm-4">
+          <span>{{item?.email}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-sm-2">Empresa</label>
+        <div class="col-sm-4">
+          <span>{{item?.empresa}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-sm-2">Telefone</label>
+        <div class="col-sm-10">
+          <span>{{item?.telefone}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-sm-2">Celular</label>
+        <div class="col-sm-10">
+          <span>{{item?.celular}}</span>
+        </div>
+      </div>
+      <div class="row">
+          <div class="vertical-top pull-right">
+              <button class="btn btn-white btn-icon btn-icon-standalone" (click)="goBack()">
+                  <i class="fa-arrow-left"></i>
+                  <span>Voltar</span>
+              </button>
+          </div>
+      </div>
+    </div>
+  </section>
+</div>

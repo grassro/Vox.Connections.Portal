@@ -1,0 +1,488 @@
+<form role="form" id="inputForm" class="form-wizard validate" [formGroup]="inputForm" novalidate (submit)="submit()">
+  <ul class="tabs">
+    <li class="active ms-hover">
+      <a href="#fwv-1" data-toggle="tab">
+        Dados Pessoais
+        <span>1</span>
+      </a>
+    </li>
+    <li class="ms-hover">
+      <a href="#fwv-2" data-toggle="tab">
+        Profissional
+        <span>2</span>
+      </a>
+    </li>
+    <li>
+      <a href="#fwv-3" data-toggle="tab">
+        Idiomas
+        <span>3</span>
+      </a>
+    </li>
+    <li>
+      <a href="#fwv-4" data-toggle="tab">
+        IMS
+        <span>4</span>
+      </a>
+    </li>
+    <li>
+      <a href="#fwv-5" data-toggle="tab">
+        Currículum
+        <span>5</span>
+      </a>
+    </li>
+    
+    <li *ngIf="!editing">
+      <a href="#fwv-6" data-toggle="tab">
+        Senha
+        <span>6</span>
+      </a>
+    </li>
+  </ul>
+  
+  <div class="progress-indicator" style="width: 0%;">
+    <span></span>
+  </div>
+  
+  <div class="tab-content no-margin">
+    
+      <!-- Tabs Content -->
+      <div class="tab-pane with-bg active" id="fwv-1" formGroupName="step1">
+        
+        <div class="row">
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="nomecompleto">Nome completo</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="linecons-user"></i>
+                </div>
+                
+                <input class="form-control" formControlName="nome" id="nome">
+              </div>
+              <validation-message [control]="step1.controls['nome']"></validation-message>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="email">E-mail</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="linecons-mail"></i>
+                </div>
+                
+                <input class="form-control" formControlName="email" id="email">
+              </div>
+              <validation-message [control]="step1.controls['email']"></validation-message>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="row">
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="nascimento">Data de Nascimento</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="linecons-calendar"></i>
+                </div>
+                
+                <input type="date" class="form-control" formControlName="nascimento" id="nascimento" max="9999-12-31">
+              </div>
+              <validation-message [control]="step1.controls['nascimento']"></validation-message>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="celular">Celular</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="linecons-mobile"></i>
+                </div>
+                <input type="text" class="form-control" formControlName="celular" id="celular" mask="\(99\)9999\-99999" (change)="celularchanged($event)">
+              </div>
+              <validation-message [control]="step1.controls['celular']"></validation-message>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="row">
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="uf">Estado</label>
+              <estado id="uf" formControlName="uf" selectClass="form-control">
+              </estado>
+              <validation-message [control]="step1.controls['uf']"></validation-message>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="cidade">Cidade</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="linecons-location"></i>
+                </div>
+                
+                <input class="form-control" formControlName="cidade" id="cidade" >
+              </div>
+              <validation-message [control]="step1.controls['cidade']"></validation-message>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+      <div class="tab-pane with-bg" id="fwv-2" formGroupName="step2">
+        
+        <div class="row">
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="nivelEscolaridade">Nível de escolaridade</label>
+              <nivel-escolaridade id="nivelEscolaridade" formControlName="nivelEscolaridade"  labelClass="control-label"
+              selectClass="form-control">
+            </nivel-escolaridade>
+            <validation-message [control]="step2.controls['nivelEscolaridade']"></validation-message>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label" for="areaAtuacao">Área de atuação</label>
+            <area-atuacao id="areaAtuacao" formControlName="areaAtuacao" labelClass="control-label"
+            selectClass="form-control">
+          </area-atuacao>
+          <validation-message [control]="step2.controls['areaAtuacao']"></validation-message>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="row">
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="nivelFuncao">Nível de função</label>
+          <nivel-funcao id="nivelFuncao" formControlName="nivelFuncao" labelClass="control-label"
+          selectClass="form-control">
+        </nivel-funcao>
+        <validation-message [control]="step2.controls['nivelFuncao']"></validation-message>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="control-label" for="areaInteresse">Área de interesse</label>
+        <area-atuacao id="areaInteresse" formControlName="areaInteresse"  labelClass="control-label"
+        selectClass="form-control">
+      </area-atuacao>
+      <validation-message [control]="step2.controls['areaInteresse']"></validation-message>
+    </div>
+  </div>
+  
+  </div>
+  
+  <div class="row">
+    
+    <div class="col-md-6">        
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Atualmente empregado?</label>
+        <div class="col-md-12">
+          <p>
+            <label class="radio-inline">
+              <input type="radio" id="empregado1" formControlName="empregado" [value]="false"> Não
+            </label>
+            <label class="radio-inline">
+              <input type="radio" id="empregado2" formControlName="empregado"  [value]="true"> Sim
+            </label>
+          </p>
+          <validation-message [control]="step2.controls['empregado']"></validation-message>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="control-label" for="empresa">Empresa</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="linecons-user"></i>
+          </div>
+          
+          <input class="form-control" formControlName="empresa" id="empresa">
+        </div>
+        <validation-message [control]="step2.controls['empresa']"></validation-message>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <div class="tab-pane with-bg" id="fwv-3" formGroupName="step3">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label class="control-label" for="idioma">Idioma</label>
+          <select class="form-control" id="idioma" formControlName="idioma">
+            <option value="Alemão">Alemão</option>
+            <option value="Espanhol">Espanhol</option>
+            <option value="Francês">Francês</option>
+            <option value="Inglês">Inglês</option>
+            <option value="Italiano">Italiano</option>
+            <option value="Japonês">Japonês</option>
+            <option value="Mandarim">Mandarim</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="col-md-5">
+        <div class="form-group">
+          <label class="control-label" for="nivelidioma">Nível</label>
+          <select class="form-control" id="nivelIdioma" formControlName="nivelIdioma">
+            <option>Básico</option>
+            <option>Intermediário</option>
+            <option>Avançado</option>
+            <option>Fluente</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="col-md-2">
+        <div class="form-group">
+          <label class="control-label">&nbsp;</label>
+          <p>
+            <button class="btn btn-white btn-icon btn-sm" type="button" (click)="adicionarIdioma()">
+              <span>Adicionar</span>
+              <i class="fa-plus"></i>
+            </button>
+          </p>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table responsive">
+          <thead>
+            <tr>
+              <th>Idioma</th>
+              <th>Nível</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let idioma of idiomaList; let i=index">
+              <td>{{idioma.nomeIdioma}}</td>
+              <td>{{idioma.nivelIdioma}}</td>
+              <td>
+                <a (click)="removerIdioma(i)" title="Remover">
+                  <i class="fa-remove"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="tab-pane with-bg" id="fwv-4" formGroupName="step4">
+    <div class="row">
+      
+      
+      <div class="col-md-6">        
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Já sabe qual a sua esfera?</label>
+          <div class="col-md-12">
+            <p>
+              <label class="radio-inline">
+                <input type="radio" id="esfera1" formControlName="radioesfera" [value]="false"> Não
+              </label>
+              <label class="radio-inline">
+                <input type="radio" id="esfera2" formControlName="radioesfera"  [value]="true"> Sim
+              </label>
+            </p>
+            <validation-message [control]="step4.controls['radioesfera']"></validation-message>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="esfera">Esfera</label>
+          <esfera id="esfera" formControlName="esfera" labelClass="control-label"  selectClass="form-control"></esfera>
+          <validation-message [control]="step4.controls['esfera']"></validation-message>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      
+      <div class="col-md-6">        
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Participa de algum link?</label>
+          <div class="col-md-12">
+            <p>
+              <label class="radio-inline">
+                <input type="radio" id="link1" formControlName="radiolink" [value]="false"> Não
+              </label>
+              <label class="radio-inline">
+                <input type="radio" id="link2" formControlName="radiolink"  [value]="true"> Sim
+              </label>
+            </p>
+            <validation-message [control]="step4.controls['radiolink']"></validation-message>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="link">Link</label>
+          <vox-link id="link" formControlName="link" labelClass="control-label" selectClass="form-control"></vox-link>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">        
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Serve em alguma área executiva?</label>
+          <div class="col-md-12">
+            <p>
+              <label class="radio-inline">
+                <input type="radio" id="areaexecutiva1" formControlName="areaExecutiva" [value]="false"> Não
+              </label>
+              <label class="radio-inline">
+                <input type="radio" id="areaexecutiva2" formControlName="areaExecutiva"  [value]="true"> Sim
+              </label>
+            </p>
+            <validation-message [control]="step4.controls['areaExecutiva']"></validation-message>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="areaExecutiva">Área Executiva</label>
+          <area-executiva id="areaExecutiva" formControlName="areaExecutiva"  labelClass="control-label"
+          selectClass="form-control"></area-executiva>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="tab-pane with-bg" id="fwv-5" formGroupName="step5">
+    <div class="row">
+      
+        <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="nomecompleto">Perfil LinkedIn</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="linecons-user"></i>
+                </div>
+                
+                <input class="form-control" formControlName="linkedin" id="linkedin">
+              </div>
+              <validation-message [control]="step5.controls['linkedin']"></validation-message>
+            </div>
+          </div>
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="curriculum">Curriculum</label>
+          
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="linecons-doc"></i>
+            </div>
+            
+            <input type="file" class="form-control" #curriculumInput formControlName="curriculum" id="curriculum" placeholder="Selecione o seu currículum"
+            accept=".pdf,.doc,.docx" (change)="onCurriculumChange($event)">
+            <input type="hidden" formControlName="hiddenCurriculum" id="hiddenCurriculum">
+          </div>
+          <validation-message [control]="step5.controls['hiddenCurriculum']"></validation-message>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="tab-pane with-bg" id="fwv-6" formGroupName="step6" *ngIf="!editing">
+    
+    <div class="row">
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Senha</label>
+          
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="linecons-lock"></i>
+            </div>
+            <input type="password" class="form-control" formControlName="senha" id="senha">
+          </div>
+          <validation-message [control]="step6.controls['senha']"></validation-message>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Confirme a Senha</label>
+          
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="linecons-lock"></i>
+            </div>
+            
+            <input type="password" class="form-control" formControlName="confirmaSenha" id="confirmaSenha">
+          </div>
+          <validation-message [control]="step6.controls['confirmaSenha']"></validation-message>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="form-group">
+      <button type="button" (click)="submit()" class="btn btn-success">Salvar</button>
+    </div>
+  </div>
+  
+  <div class="row" *ngIf="editing">
+    <div class="col-md-2 form-group">
+      <button type="button" (click)="submit()" class="btn btn-success">Salvar</button>
+    </div>
+  </div>
+  
+  <!-- Tabs Pager -->
+  
+  <ul class="pager wizard">
+    <li class="previous disabled">
+      <a href="javascript: void(0);">
+        <i class="entypo-left-open"></i> Anterior</a>
+      </li>
+      
+      <li class="next">
+        <a href="javascript: void(0);">Próximo
+          <i class="entypo-right-open"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  </form>

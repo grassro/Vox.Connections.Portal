@@ -1,0 +1,6 @@
+<select *ngIf="!controlDivClass" [id]="id" [name]="id" [class]="selectClass" [required]="required" (change)="onChange($event.currentTarget.value)">
+  <option value="" [selected]="!value">Selecione</option>
+  <option *ngFor="let item of items" value="{{item.descricao}}" [selected]="value && value === item.descricao">
+    {{ item.descricao }}
+  </option>
+</select>
